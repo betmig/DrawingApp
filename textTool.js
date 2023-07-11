@@ -1,6 +1,6 @@
 function textTool() {
 	this.name = "textTool";
-	this.icon = "assets/textTool.jpg";
+	this.icon = "textTool.jpg";
 	this.fontFamilies = ["Arial", "Helvetica", "Times New Roman", "Courier New", "Georgia", "Verdana"];
 	this.selectedFont = "Arial";
 	this.fontSize = 16;

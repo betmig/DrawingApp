@@ -1,7 +1,7 @@
 // ConfettiTool.js
 function ConfettiTool() {
     this.name = "confettiTool";
-    this.icon = "assets/confettiTool.jpg";
+    this.icon = "confettiTool.jpg";
   
     var points = 13;
     var spread = 10;

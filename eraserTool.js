@@ -1,7 +1,7 @@
 function eraserTool() {
   //set an icon and a name for the object
   this.name = "eraserTool";
-  this.icon = "assets/eraserTool.jpg";
+  this.icon = "eraserTool.jpg";
 
   this.onSelect = function() {
 		// Hide the text-container, stamps-container, and mirror-container when freehand tool is selected

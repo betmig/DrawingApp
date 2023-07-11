@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="lib/p5.min.js"></script>
+
+    <script src="sketch.js"></script>
+    
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <script src="toolbox.js"></script>
+    <script src="colourPalette.js"></script>
+    <script src="helperFunctions.js"></script>
+    <script src="freehandTool.js"></script>
+    <script src="confettiTool.js"></script>
+    <script src="eraserTool.js"></script>
+    <script src="lineToTool.js"></script>
+    <script src="sprayCanTool.js"></script>
+    <script src="mirrorDrawTool.js"></script>
+    <script src="stampTool.js"></script>
+    <script src="editableShapeTool.js"></script>
+    <script src="textTool.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    
+  	<div class="wrapper">
+      <div class="box header">My Drawing App
+        <button id="clearButton">🗑 Clear</button>
+        <button id="saveImageButton">💾 Save Image</button>
+      </div>
+      <div class="box" id="sidebar"></div>
+
+      <div id="content"><div id="mirrorLine" style="display: none; position: absolute; background-color: red;"></div>
+    </div>
+
+      <div id="right-sidebar"></div>
+
+      <div id="box colours">
+        <div class="box colourPalette" id="colourPalette"></div>
+      </div>
+
+      <div class="box options" id="stroke-container">
+        <div class="options-group">
+          <button id="strokeButton">🖊 Stroke Options</button>
+          <div class="stroke hidden">
+            <span id="stroke size">
+              <p>Size: <span id="demo"></span></p>
+              <input type="range" min="1" max="80" value="10" class="slider" id="myRange">
+            </span>
+            <span id="stroke colours">
+              <div class="colour-panel">
+                <p>Colour Picker: <input type="color" id="colour" value="colour"></p>
+                <p>Hex code: <input type="text" id="hex"></p>
+              </div>
+            </span>
+          </div>
+        </div>
+      
+        <div class="options-group" id="text-container">
+          <button id="textButton">📝 Text Options</button>
+          <div class="text hidden">
+            <p>Write your text here: <input type="text" id="textInput" placeholder="Enter text here"></p>
+            <p>
+              Choose the Font Family:
+              <select id="fontSelect">
+                <option value="Arial">Arial</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Verdana">Verdana</option>
+              </select>
+            </p>
+            <p>
+              <button id="boldButton">Bold</button>
+              <button id="italicButton">Italic</button>
+              <button id="normalButton">Normal</button>
+            </p>
+          </div>
+        </div>
+      
+        <div class="options-group" id="stamps-container">
+          <button id="stampsButton">🌠 Stamp Options</button>
+          <div class="stamps hidden">
+            Select stamps here:
+            <select id="emoji-select">
+              <option value="❤️">❤️</option>
+              <option value="🎉">🎉</option>
+              <option value="🐶">🐶</option>
+              <option value="🐱">🐱</option>
+              <option value="🌸">🌸</option>
+              <option value="🍕">🍕</option>
+              <option value="🚀">🚀</option>
+              <option value="🌈">🌈</option>
+              <option value="🌙">🌙</option>
+              <option value="⭐">⭐</option>
+              <option value="☀️">☀️</option>
+              <option value="🌞">🌞</option>
+              <option value="🌊">🌊</option>
+              <option value="🍁">🍁</option>
+              <option value="🍂">🍂</option>
+              <option value="🍃">🍃</option>
+              <option value="🌻">🌻</option>
+              <option value="🌺">🌺</option>
+              <option value="🌼">🌼</option>
+              <option value="🌹">🌹</option>
+              <option value="🌸">🌸</option>
+              <option value="🎄">🎄</option>
+              <option value="🎃">🎃</option>
+              <option value="🎁">🎁</option>
+              <option value="🎈">🎈</option>
+              <option value="🎀">🎀</option>
+              <option value="🍦">🍦</option>
+              <option value="🍓">🍓</option>
+              <option value="🍉">🍉</option>
+              <option value="🍒">🍒</option>
+              <option value="🍔">🍔</option>
+              <option value="🍟">🍟</option>
+              <option value="🍩">🍩</option>
+              <option value="🍪">🍪</option>
+              <option value="🍍">🍍</option>
+              <option value="🍇">🍇</option>
+              <option value="🍊">🍊</option>
+              <option value="🚗">🚗</option>
+              <option value="🚲">🚲</option>
+              <option value="✈️">✈️</option>
+            </select>
+            
+          </div>
+        </div>
+
+        <div class="options-group" id="mirror-container">
+          <button id="mirrowButton">🪞 Mirror Options</button>
+          <div class="mirrow hidden">
+            <button id="directionButton">Make Vertical</button>
+          </div>
+        </div>
+
+        <div class="options-group" id="editable-container">
+          <button id="editable-shapesButton">🌠 Editable Shapes Options</button>
+          <div class="editable hidden">
+            Select shape here:
+            <select id="editable-select">
+              <option value="rectangle">█ Rectangle</option>
+              <option value="square">🔲 Square</option>
+              <option value="ellipse">🔘 Circle</option>
+              <option value="triangle">🔼 Triangle</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+      <script>
+        	  window.onload = function() {
+    // hide all nested content by default
+    document.querySelector('.stroke').classList.add('hidden');
+    document.querySelector('.text').classList.add('hidden');
+    document.querySelector('.stamps').classList.add('hidden');
+
+    // click handler for stroke button
+    document.querySelector('#strokeButton').addEventListener('click', function() {
+      document.querySelector('.stroke').classList.toggle('hidden');
+    });
+
+    // click handler for text button
+    document.querySelector('#textButton').addEventListener('click', function() {
+      document.querySelector('.text').classList.toggle('hidden');
+    });
+
+    // click handler for stamps button
+    document.querySelector('#stampsButton').addEventListener('click', function() {
+      document.querySelector('.stamps').classList.toggle('hidden');
+    });
+
+    // click handler for mirror button
+    document.querySelector('#mirrowButton').addEventListener('click', function() {
+      document.querySelector('.mirrow').classList.toggle('hidden');
+    });
+
+     // click handler for editable button
+     document.querySelector('#editable-shapesButton').addEventListener('click', function() {
+      document.querySelector('.editable').classList.toggle('hidden');
+    });
+
+  }
+
+      </script>
+
+      
+              
+                <div id="tools"></div>
+                <div id="contents"></div>
+              </div>
+                </body>
+              </html>

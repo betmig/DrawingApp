@@ -1,6 +1,6 @@
 function mirrorDrawTool() {
 	this.name = "mirrorDraw";
-	this.icon = "assets/mirrorDraw.jpg";
+	this.icon = "mirrorDraw.jpg";
   
 	this.axis = "x";
 	this.lineOfSymmetry = width / 2;

@@ -1,6 +1,6 @@
 function stampTool() {
   this.name = "stampTool";
-  this.icon = "assets/stampTool.jpg";
+  this.icon = "stampTool.jpg";
   this.optionsLoaded = false;
   this.emoji = "❤️";
   this.size = 36;

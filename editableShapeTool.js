@@ -1,6 +1,6 @@
 function editableShapeTool() {
 	this.name = "editableShapeTool";
-	this.icon = "assets/editableShapeTool.jpg";
+	this.icon = "editableShapeTool.jpg";
   
 	this.shape = "rectangle";
 	this.isDrawing = false;
